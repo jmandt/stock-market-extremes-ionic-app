@@ -1,0 +1,34 @@
+<ion-content fullscreen="true">
+  <ion-slides>
+    <ion-slide *ngIf="activeSlide==='first'">
+        <ion-card>
+          <ion-card-header >
+            <ion-card-subtitle>Welcome</ion-card-subtitle>
+            <ion-card-title>Stock Market Extremes</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            Thank for checking out my new App :)
+          </ion-card-content>
+        </ion-card>
+      <ion-button (click)="next()">Next</ion-button>
+    </ion-slide>
+    <ion-slide *ngIf="activeSlide==='second'">
+      <ion-card>
+        <ion-card-header >
+          <ion-card-subtitle>Version 0.01</ion-card-subtitle>
+          <ion-card-title>First tests</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          Hello and welcome.
+          In this very first version there is not much to see. You can checkout basic Company infos for Companies of the DAX and MDAX.
+          Everything else is about to come soon.
+          <br>
+          Stay tuned.
+        </ion-card-content>
+      </ion-card>
+      <ion-button (click)="getStarted()">Get started</ion-button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-list class="ion-margin-top">
+    <ion-item>
+        <ion-label>Headquarters</ion-label>
+        <p> {{company.city}}, {{company.country}}</p>
+    </ion-item>
+    <ion-item>
+        <ion-label>Sector, Industry</ion-label>
+        <p> {{company.naicsSector}}</p>
+    </ion-item>
+    <ion-item>
+        <ion-label>Subsector</ion-label>
+        <p> {{company.naicsSubsector}}</p>
+    </ion-item>
+    <ion-item>
+        <ion-label>Full-Time Employees</ion-label>
+        <p> {{company.employeeTotal}}</p>
+    </ion-item>
+    <ion-item>
+        <a target="_blank" rel="noopener noreferrer" [href]="company.weburl"> {{company.weburl}}</a>
+    </ion-item>
+</ion-list>
+
+<ion-card>
+    <ion-card-header>
+        <ion-card-subtitle>{{company.ggroup}}</ion-card-subtitle>
+        <ion-card-title>Summary</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+        {{company.description}}
+    </ion-card-content>
+</ion-card>
+
+<ion-toolbar>Peers</ion-toolbar>
+<ion-slides *ngIf="company.peers.length > 0" [options]="sliderConfig">
+    <ion-slide>
+        <ion-card *ngFor="let peer of company.peers">
+            <ion-card-title>{{peer}}</ion-card-title>
+        </ion-card>
+    </ion-slide>
+</ion-slides>

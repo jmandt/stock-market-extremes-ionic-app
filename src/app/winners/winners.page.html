@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Winners
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ul>
+    <li class="text" *ngFor="let item of companies">
+      <a (click)="navToCompanyPage(item.isin)" routerDirection="forward">{{item.name}}</a>
+    </li>
+  </ul>
+</ion-content>

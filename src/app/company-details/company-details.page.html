@@ -1,0 +1,30 @@
+<div *ngIf="company">
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-button routerLink="tabs/winners" routerDirection="back">Back</ion-button>
+            </ion-buttons>
+            <ion-title>{{company.name}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content fullscreen="true">
+        <ion-segment value="overview" (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="overview">
+                <ion-label>Overview</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="financials">
+                <ion-label>Financials</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="news">
+                <ion-label>News</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+
+        <app-overview *ngIf="selectedSegment==='overview'" [company]="company"></app-overview>
+        <app-financials *ngIf="selectedSegment==='financials'"></app-financials>
+        <app-news *ngIf="selectedSegment==='news'" [isin]="isin"></app-news>
+
+    </ion-content>
+</div>
+

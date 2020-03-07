@@ -8,27 +8,27 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'winners',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+               import('../winners/winners.module').then(m => m.WinnersPageModule),
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'loosers',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../loosers/loosers.module').then(m => m.LoosersPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'watchlist',
         children: [
           {
             path: '',
@@ -39,14 +39,19 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/winners',
         pathMatch: 'full'
+      },
+      {
+        path: '**',
+        redirectTo: '/tabs/winners',
       }
+
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/winners',
     pathMatch: 'full'
   }
 ];
