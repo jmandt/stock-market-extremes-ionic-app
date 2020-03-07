@@ -17,7 +17,7 @@ export class WelcomeGuard implements CanActivate {
         state: RouterStateSnapshot): Promise<boolean> {
         const isComplete = await this.storage.get('welcomeComplete');
         if (!isComplete) {
-            this.router.navigateByUrl('7welcome');
+            this.router.navigateByUrl('welcome');
         }
         return isComplete;
     }

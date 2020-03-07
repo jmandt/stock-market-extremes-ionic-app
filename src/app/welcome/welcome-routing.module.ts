@@ -4,7 +4,7 @@ import {WelcomePage} from './welcome.page';
 
 const routes: Routes = [
   {
-    path: 'welcome',
+    path: '',
     component: WelcomePage,
   },
 ];

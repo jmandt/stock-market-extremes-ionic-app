@@ -9,7 +9,7 @@ const routes: Routes = [
     canActivate: [WelcomeGuard],
   },
   {
-    path: '',
+    path: 'welcome',
     loadChildren: () =>
         import('./welcome/welcome.module').then(m => m.WelcomePageModule),
   },
