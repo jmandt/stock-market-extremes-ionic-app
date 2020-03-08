@@ -36,3 +36,5 @@ UserInterfaceState.xcuserstate
 
 debug.log
 .firebaserc
+src/environments/environment.ts
+www/
