@@ -1,11 +1,13 @@
-<ion-card *ngFor="let article of sortData">
-  <ion-card-header>
-    <ion-card-subtitle><a target="_blank" rel="noopener noreferrer" [href]="article.url">{{article.provider[0].name}}</a>
-      {{article.datePublished | date: 'dd.MM.yyyy - hh:mm'}}</ion-card-subtitle>
-    <ion-card-title>{{article.name}}</ion-card-title>
-  </ion-card-header>
+<div *ngIf="news">
+  <ion-card *ngFor="let article of sortData" (click)="newsDetails(article, $event)">
+    <ion-card-header>
+      <ion-card-subtitle><a target="_blank" rel="noopener noreferrer" [href]="article.url">{{article.provider[0].name}}</a>
+        {{article.datePublished | date: 'dd.MM.yyyy - hh:mm'}}</ion-card-subtitle>
+      <ion-card-title>{{article.name}}</ion-card-title>
+    </ion-card-header>
 
-  <ion-card-content>
-    {{article.description}}
-  </ion-card-content>
-</ion-card>
+    <ion-card-content>
+      {{article.category}}
+    </ion-card-content>
+  </ion-card>
+</div>

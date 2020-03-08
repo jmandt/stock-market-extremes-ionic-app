@@ -3,7 +3,7 @@ import {CompanyService} from '../../services/company.service';
 import {ActivatedRoute} from '@angular/router';
 import {Company} from '../../models/models';
 import {Location} from '@angular/common';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 
 @Component({

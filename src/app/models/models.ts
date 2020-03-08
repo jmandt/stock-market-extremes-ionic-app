@@ -16,13 +16,25 @@ export interface Company {
     weburl: string;
 }
 
-export interface News {
+export interface NewsArticle {
     category: string;
     datePublished: string;
     description: string;
+    name: string;
     image: NewsImage;
     provider: NewsProvider[];
+    url: string;
+}
 
+export interface NewsContext {
+    queryContext: {
+        adultIntent: boolean;
+        originalQuery: string;
+    };
+    readLink: string;
+    sort: any [];
+    totalEstimatedMatches: number;
+    value: NewsArticle[];
 }
 
 export interface NewsImage {
@@ -31,6 +43,7 @@ export interface NewsImage {
 }
 
 export interface NewsProvider {
+    name: string;
     url: string;
 }
 

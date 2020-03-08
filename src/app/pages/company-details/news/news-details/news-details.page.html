@@ -1,0 +1,19 @@
+<div *ngIf="article">
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-button (click)="goBack()">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-title>{{article.provider[0].name}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content fullscreen="true">
+        <div class="ion-margin" style="font-size: larger">{{article.name}}</div>
+        <div class="ion-margin">
+            {{article.description}}
+        </div>
+    </ion-content>
+</div>

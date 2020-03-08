@@ -10,7 +10,8 @@ import {CompanyDetailsPage} from './company-details.page';
 import {NewsComponent} from './news/news.component';
 import {OverviewComponent} from './overview/overview.component';
 import {FinancialsComponent} from './financials/financials.component';
-import {SharedModule} from "../../shared/shared.module";
+import {SharedModule} from '../../shared/shared.module';
+import {NewsDetailsPageModule} from './news/news-details/news-details.module';
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import {SharedModule} from "../../shared/shared.module";
         IonicModule,
         CompanyDetailsPageRoutingModule,
         SharedModule,
+        NewsDetailsPageModule
     ],
     declarations: [
         CompanyDetailsPage,

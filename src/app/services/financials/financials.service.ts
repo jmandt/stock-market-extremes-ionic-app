@@ -9,7 +9,7 @@ export class FinancialsService {
   constructor(private db: AngularFirestore) {}
 
   getFinancialsBySymbol(symbol: string) {
-    return this.db.collection('stock_data').doc(symbol)
+    return this.db.collection('company_info').doc(symbol)
         .collection('realtime',  ref => ref.orderBy('last_trade_time', 'desc').limit(1)).valueChanges();
   }
 
