@@ -1,26 +1,32 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FinancialsService} from '../../../services/financials/financials.service';
+import {Financials} from '../../../models/models';
+import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-financials',
-  templateUrl: './financials.component.html',
-  styleUrls: ['./financials.component.scss'],
+    selector: 'app-financials',
+    templateUrl: './financials.component.html',
+    styleUrls: ['./financials.component.scss'],
 })
-export class FinancialsComponent implements OnInit {
-  @Input() symbol: string | undefined;
+export class FinancialsComponent implements OnInit, OnDestroy {
+    @Input() symbol: string | undefined;
 
-  financials: any;
+    financials: Financials;
 
-  constructor(private finService: FinancialsService) { }
+    subscriptions: Subscription [] = [];
 
-  ngOnInit() {
-    console.log(this.symbol)
-    this.finService.getFinancialsBySymbol(this.symbol).subscribe(
-        res => {
-          this.financials = res[0];
-          console.log(this.financials);
-        }
-    );
-  }
 
+    constructor(private finService: FinancialsService) {
+    }
+
+    ngOnInit() {
+        this.subscriptions.push(
+            this.finService.getFinancialsBySymbol(this.symbol).subscribe(
+                (res: Financials []) => this.financials = res[0]
+            ));
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(item => item.unsubscribe());
+    }
 }

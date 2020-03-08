@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FinancialsService} from '../../services/financials/financials.service';
-import {Company} from '../../models/models';
-import {CompanyService} from '../../services/company.service';
-import {Router} from '@angular/router';
+import {Financials} from '../../models/models';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -10,23 +9,22 @@ import {Router} from '@angular/router';
     templateUrl: 'winners.page.html',
     styleUrls: ['winners.page.scss']
 })
-export class WinnersPage implements OnInit {
+export class WinnersPage implements OnInit, OnDestroy {
 
-    winners;
+    winners: Financials [] = [];
+    subscriptions: Subscription [] = [];
 
-    constructor(private finService: FinancialsService,
-                private companyService: CompanyService,
-                private router: Router) {
+    constructor(private finService: FinancialsService) {
     }
 
     ngOnInit() {
-        this.finService.getWinners(10).subscribe((res) => this.winners = res);
+        this.subscriptions.push(
+            this.finService.getWinners(10).subscribe((res: Financials []) => this.winners = res)
+        );
     }
 
-    goCompanyDetails(symbol: any) {
-        this.companyService.getIsinFromSymbol(symbol).subscribe(
-            (res: Company) => this.router.navigateByUrl(`company/${res.isin}`)
-        );
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(item => item.unsubscribe());
     }
 
 }

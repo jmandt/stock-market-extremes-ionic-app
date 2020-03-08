@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Company} from '../../../models/models';
+import {Subscription} from 'rxjs';
+import {CompanyService} from '../../../services/company.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-overview',
@@ -9,13 +12,21 @@ import {Company} from '../../../models/models';
 export class OverviewComponent implements OnInit {
   @Input() company: Company;
 
-  sliderConfig = {
-    slidesPerView: 0.6,
-    centeredSlides: true
-  };
+  peers: string [] = [];
+  subscriptions: Subscription [] = [];
 
-  constructor() { }
+  constructor(private companyService: CompanyService,
+              private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.peers = this.company.peers.filter(item => item !== this.company.ticker);
+  }
+
+  goCompanyDetails(symbol: any) {
+    this.subscriptions.push(
+        this.companyService.getIsinFromSymbol(symbol).subscribe(
+            (res: Company) => this.router.navigateByUrl(`company/${res.isin}`)
+        ));
+  }
 
 }

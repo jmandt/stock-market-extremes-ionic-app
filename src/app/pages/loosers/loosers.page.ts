@@ -1,34 +1,29 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FinancialsService} from '../../services/financials/financials.service';
-import {CompanyService} from '../../services/company.service';
-import {Router} from '@angular/router';
-import {Company} from '../../models/models';
+import {Financials} from '../../models/models';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-loosers',
     templateUrl: 'loosers.page.html',
     styleUrls: ['loosers.page.scss']
 })
-export class LoosersPage implements OnInit {
+export class LoosersPage implements OnInit, OnDestroy {
 
-    loosers;
+    loosers: Financials [];
+    subscriptions: Subscription [] = [];
 
-    constructor(private finService: FinancialsService,
-                private companyService: CompanyService,
-                private router: Router) {
+    constructor(private finService: FinancialsService) {
     }
 
     ngOnInit() {
-        this.finService.getLoosers(10).subscribe((res) => {
-            this.loosers = res;
-            console.log(res);
-        });
-    }
-
-
-    goCompanyDetails(symbol: any) {
-        this.companyService.getIsinFromSymbol(symbol).subscribe(
-            (res: Company) => this.router.navigateByUrl(`company/${res.isin}`)
+        this.subscriptions.push(
+            this.finService.getLoosers(10).subscribe((res: Financials []) => this.loosers = res)
         );
     }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(item => item.unsubscribe());
+    }
+
 }

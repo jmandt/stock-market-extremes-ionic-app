@@ -1,0 +1,13 @@
+<ion-item (click)="goCompanyDetails(financials.symbol)">
+  <ion-label>{{financials.symbol}}
+    <div class="sublabel">{{financials.name}}</div>
+  </ion-label>
+  <div class="ion-margin-end">
+    <div class="sublabel">€ {{financials.price}}</div>
+    <div class="sublabel">{{financials.last_trade_time | date: 'MMM dd'}}</div>
+  </div>
+  <div [className]="financials.change_pct > 0 ? 'bg-positive market-changes ion-text-right' : 'bg-negative market-changes ion-text-right'">
+    <div class="absolutDelta">{{financials.day_change > 0 ? '+ ' + financials.day_change : financials.day_change }} </div>
+    <div class="relativeDelta">{{financials.change_pct > 0 ? '+ ' + financials.change_pct : financials.change_pct }}%</div>
+  </div>
+</ion-item>

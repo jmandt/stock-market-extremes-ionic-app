@@ -10,6 +10,7 @@ import {CompanyDetailsPage} from './company-details.page';
 import {NewsComponent} from './news/news.component';
 import {OverviewComponent} from './overview/overview.component';
 import {FinancialsComponent} from './financials/financials.component';
+import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import {FinancialsComponent} from './financials/financials.component';
         FormsModule,
         IonicModule,
         CompanyDetailsPageRoutingModule,
+        SharedModule,
     ],
     declarations: [
         CompanyDetailsPage,

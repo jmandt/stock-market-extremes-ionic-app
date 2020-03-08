@@ -8,18 +8,6 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item *ngFor="let looser of loosers" (click)="goCompanyDetails(looser.symbol)">
-      <ion-label>{{looser.symbol}}
-        <div class="sublabel">{{looser.name}}</div>
-      </ion-label>
-      <div class="ion-margin-end">
-        <div class="sublabel">€ {{looser.price}}</div>
-        <div class="sublabel">{{looser.last_trade_time | date: 'MMM dd'}}</div>
-      </div>
-      <div class="market-changes ion-text-right">
-        <div class="absolutDelta">+ {{looser.day_change}}</div>
-        <div class="relativeDelta">+ {{looser.change_pct}}%</div>
-      </div>
-    </ion-item>
+    <app-ticker-item *ngFor="let looser of loosers" [financials]="looser"></app-ticker-item>
   </ion-list>
 </ion-content>

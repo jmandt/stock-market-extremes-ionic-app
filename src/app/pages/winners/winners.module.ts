@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {WinnersPage} from './winners.page';
 import {CompanyDetailsPageModule} from '../company-details/company-details.module';
+import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
     imports: [
@@ -13,6 +14,7 @@ import {CompanyDetailsPageModule} from '../company-details/company-details.modul
         FormsModule,
         RouterModule.forChild([{path: '', component: WinnersPage}]),
         CompanyDetailsPageModule,
+        SharedModule,
     ],
     declarations: [WinnersPage]
 })

@@ -14,6 +14,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
 import {IonicStorageModule} from '@ionic/storage';
 import {WelcomePageModule} from './pages/welcome/welcome.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,6 +25,7 @@ import {WelcomePageModule} from './pages/welcome/welcome.module';
         AppRoutingModule,
         IonicStorageModule.forRoot(),
         WelcomePageModule,
+        SharedModule
     ],
     providers: [
         StatusBar,

@@ -1,0 +1,25 @@
+.market-changes {
+  width: 5rem;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.bg-positive {
+  background-color: #2dd36f;
+}
+
+.bg-negative{
+  background-color: #ff4961;
+}
+
+.sublabel {
+  font-size: small;
+}
+
+.absolutDelta {
+  font-size: smaller;
+}
+
+.relativeDelta {
+  font-size: small;
+}

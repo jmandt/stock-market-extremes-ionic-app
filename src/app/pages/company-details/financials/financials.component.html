@@ -1,10 +1,48 @@
-<ion-card>
-  <ion-card-header >
-    <ion-card-subtitle>Version 0.01</ion-card-subtitle>
-    <ion-card-title>Coming soon</ion-card-title>
-  </ion-card-header>
+<div  *ngIf="financials" class="ion-margin-top">
+  <app-ticker-item [financials]="financials"></app-ticker-item>
+  <ion-item class="font-small">
+    <ion-label>Exchange</ion-label>
+    {{financials.stock_exchange_long}}
+  </ion-item>
+  <ion-item class="font-small">
+    <ion-label>Capitalisation</ion-label>
+    {{financials.market_cap}}
+  </ion-item>
+  <ion-item class="font-small">
+    <ion-label>Number Shares</ion-label>
+    {{financials.shares}}
+  </ion-item>
+  <ion-grid class="ion-no-margin ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <ion-item class="font-small">
+          <ion-label>Low</ion-label>
+          € {{financials.day_low}}
+        </ion-item>
+        <ion-item class="font-small">
+          <ion-label>52 Week Low</ion-label>
+          € {{financials.year_low}}
+        </ion-item>
+        <ion-item class="font-small">
+          <ion-label>Volume today</ion-label>
+          {{financials.volume}}
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item class="font-small">
+          <ion-label>High</ion-label>
+          € {{financials.day_high}}
+        </ion-item>
+        <ion-item class="font-small">
+          <ion-label>52 Week High</ion-label>
+          € {{financials.year_high}}
+        </ion-item>
+        <ion-item class="font-small">
+          <ion-label>Average Volume</ion-label>
+          {{financials.volume_avg}}
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <ion-card-content>
-    Here you will soon see some fancy graphics :)
-  </ion-card-content>
-</ion-card>
+</div>

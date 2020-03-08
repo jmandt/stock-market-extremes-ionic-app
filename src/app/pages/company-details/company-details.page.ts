@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CompanyService} from '../../services/company.service';
 import {ActivatedRoute} from '@angular/router';
 import {Company} from '../../models/models';
 import {Location} from '@angular/common';
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -10,11 +11,13 @@ import {Location} from '@angular/common';
     templateUrl: './company-details.page.html',
     styleUrls: ['./company-details.page.scss'],
 })
-export class CompanyDetailsPage implements OnInit {
+export class CompanyDetailsPage implements OnInit, OnDestroy {
 
     isin: string;
     company: Company;
-    selectedSegment = 'overview';
+    selectedSegment = 'financials';
+    subscriptions: Subscription [] = [];
+
 
     constructor(private companyService: CompanyService,
                 private route: ActivatedRoute,
@@ -23,7 +26,9 @@ export class CompanyDetailsPage implements OnInit {
 
     ngOnInit() {
         this.isin = this.route.snapshot.params.id;
-        this.companyService.getCompanyInfo(this.isin).subscribe((result: Company[]) => this.company = result[0]);
+        this.subscriptions.push(
+            this.companyService.getCompanyInfo(this.isin).subscribe((result: Company[]) => this.company = result[0])
+        );
     }
 
     segmentChanged(event) {
@@ -32,5 +37,9 @@ export class CompanyDetailsPage implements OnInit {
 
     goBack() {
         this.location.back();
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(item => item.unsubscribe());
     }
 }
