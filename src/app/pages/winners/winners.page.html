@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Winners
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-list>
+        <ion-item *ngFor="let winner of winners" (click)="goCompanyDetails(winner.symbol)">
+            <ion-label>{{winner.symbol}}
+                <div class="sublabel">{{winner.name}}</div>
+            </ion-label>
+            <div class="ion-margin-end">
+                <div class="sublabel">€ {{winner.price}}</div>
+                <div class="sublabel">{{winner.last_trade_time | date: 'MMM dd'}}</div>
+            </div>
+            <div class="market-changes ion-text-right">
+                <div class="absolutDelta">+ {{winner.day_change}}</div>
+                <div class="relativeDelta">+ {{winner.change_pct}}%</div>
+            </div>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

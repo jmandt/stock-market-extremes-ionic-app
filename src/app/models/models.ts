@@ -8,9 +8,11 @@ export interface Company {
     gsubind: string;
     gsector: string;
     ipo: string;
+    isin: string;
     naicsSector: string;
     naicsSubsector: string;
     peers: string [];
+    ticker: string;
     weburl: string;
 }
 

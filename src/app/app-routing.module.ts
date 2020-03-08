@@ -5,13 +5,13 @@ import {WelcomeGuard} from './guards/welcome.guard';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
     canActivate: [WelcomeGuard],
   },
   {
     path: 'welcome',
     loadChildren: () =>
-        import('./welcome/welcome.module').then(m => m.WelcomePageModule),
+        import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule),
   },
   {
     path: '**',

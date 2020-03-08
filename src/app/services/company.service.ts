@@ -19,4 +19,8 @@ export class CompanyService {
                 ref => ref.where('isin', '==', isin)).valueChanges();
     }
 
+    getIsinFromSymbol(symbol: string) {
+       return this.db.collection('company_info').doc(symbol).valueChanges();
+    }
+
 }

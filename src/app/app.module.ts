@@ -13,7 +13,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 import {environment} from '../environments/environment';
 import {IonicStorageModule} from '@ionic/storage';
-import {WelcomePageModule} from './welcome/welcome.module';
+import {WelcomePageModule} from './pages/welcome/welcome.module';
 
 @NgModule({
     declarations: [AppComponent],

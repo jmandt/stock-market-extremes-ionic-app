@@ -1,0 +1,22 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+.market-changes {
+  width: 5rem;
+  background-color: #2dd36f;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.sublabel {
+  font-size: small;
+}
+
+.absolutDelta {
+  font-size: smaller;
+}
+
+.relativeDelta {
+  font-size: small;
+}

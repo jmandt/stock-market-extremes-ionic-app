@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Company} from '../../models/models';
+import {Company} from '../../../models/models';
 
 @Component({
   selector: 'app-overview',

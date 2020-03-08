@@ -2,7 +2,9 @@
     <ion-header>
         <ion-toolbar>
             <ion-buttons slot="start">
-                <ion-button routerLink="/tabs/watchlist" routerDirection="back">Back</ion-button>
+                <ion-button (click)="goBack()">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </ion-button>
             </ion-buttons>
             <ion-title>{{company.name}}</ion-title>
         </ion-toolbar>
@@ -22,7 +24,7 @@
         </ion-segment>
 
         <app-overview *ngIf="selectedSegment==='overview'" [company]="company"></app-overview>
-        <app-financials *ngIf="selectedSegment==='financials'"></app-financials>
+        <app-financials *ngIf="selectedSegment==='financials'" [symbol]="company.ticker"></app-financials>
         <app-news *ngIf="selectedSegment==='news'" [isin]="isin"></app-news>
 
     </ion-content>
