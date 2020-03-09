@@ -19,8 +19,22 @@ export class WinnersPage implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscriptions.push(
-            this.finService.getWinners(10).subscribe((res: Financials []) => this.winners = res)
+            this.finService.getWinners(10).subscribe((res: Financials []) => {
+                this.winners = [];
+                this.sortFinancials(res).forEach((item: Financials) => {
+                    this.winners.filter((winner: Financials) => winner.symbol === item.symbol).length === 0 ?
+                        // tslint:disable-next-line:no-unused-expression
+                        this.winners.push(item) : null;
+                });
+                this.winners = this.winners.filter((item: Financials) => item.change_pct > 0).slice(0, 10);
+            })
         );
+    }
+
+    sortFinancials(data: Financials []) {
+        return data.sort((a: Financials, b: Financials) => {
+            return b.change_pct - a.change_pct;
+        });
     }
 
     ngOnDestroy(): void {

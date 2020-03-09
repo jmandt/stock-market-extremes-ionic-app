@@ -15,13 +15,14 @@ export class FinancialsService {
 
   getWinners(limit: number) {
     return this.db.collectionGroup('realtime',
-            ref => ref.where('change_pct', '>', 0)
-                .orderBy('change_pct', 'desc').limit(limit)).valueChanges();
+            ref => ref
+                .orderBy('last_trade_time', 'desc').limit(200)).valueChanges();
   }
 
   getLoosers(limit: number) {
     return this.db.collectionGroup('realtime',
-        ref => ref.orderBy('change_pct', 'asc').limit(limit)).valueChanges();
+        ref => ref
+            .orderBy('last_trade_time', 'desc').limit(200)).valueChanges();
   }
 
 }

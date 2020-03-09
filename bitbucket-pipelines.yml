@@ -11,7 +11,7 @@ pipelines:
         name: Build
         script:
           - npm install
-          - npm run build
+          - npm run build --prod
         artifacts:
           - www/**
 
